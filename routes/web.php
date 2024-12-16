@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\SubmissionController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RankingController;
 
 Route::get('/', function () {
     return view('home', ['competitions' => ['Compétition 1', 'Compétition 2']]);
@@ -66,3 +70,20 @@ Route::post('/logout', function (Request $request) {
 Route::get('/dashboard', function () {
     return 'Bienvenue sur le tableau de bord !';
 })->name('dashboard');
+
+/* page CRUD */
+
+// Route pour afficher toutes les compétitions
+Route::get('/competitions', [CompetitionController::class, 'index'])->name('competitions.index');
+
+// Route pour afficher une compétition spécifique et ses détails
+Route::get('/competitions/{competition}', [CompetitionController::class, 'show'])->name('competitions.show');
+
+// Route pour afficher le classement d'une compétition
+Route::get('/competitions/{competition}/ranking', [RankingController::class, 'index'])->name('competitions.ranking');
+
+// Route pour afficher un challenge spécifique dans une compétition
+Route::get('/competitions/{competition}/challenges/{challenge}', [ChallengeController::class, 'show'])->name('competitions.challenges.show');
+
+// Route pour soumettre une réponse pour un challenge
+Route::post('/competitions/{competition}/challenges/{challenge}/submit', [SubmissionController::class, 'store'])->name('competitions.challenges.submit');

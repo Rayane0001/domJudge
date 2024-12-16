@@ -9,24 +9,13 @@ class Challenge extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'difficulte', 'enonce', 'visuel'];
-
-    protected $casts = [
-        'nom' => 'string',
-        'difficulte' => 'string',
-        'enonce' => 'string',
-        'visuel' => 'string',
-    ];
-
-    public function tests() {
-        return $this->hasMany(Test::class);
+    public function competition()
+    {
+        return $this->belongsTo(Competition::class);  // Chaque challenge appartient à une compétition
     }
 
-    public function soumissions() {
-        return $this->hasMany(Submission::class);
-    }
-
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);  // Un challenge peut avoir plusieurs soumissions
     }
 }
