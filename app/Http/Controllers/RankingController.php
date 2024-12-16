@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Competition;
+
+class RankingController extends Controller
+{
+    public function index(Competition $competition)
+    {
+        // Récupérer toutes les soumissions pour cette compétition
+        $submissions = $competition->submissions()->with(['user', 'challenge'])->get();
+
+        // Calculer le classement
+        $teams = $this->calculateRanking($submissions);
+
+        return view('ranking.index', compact('competition', 'teams'));
+    }
+
+    private function calculateRanking($submissions)
+    {
+        $ranking = [];
+
+        // Organiser les soumissions par équipe
+        foreach ($submissions as $submission) {
+            $teamId = $submission->user_id;
+            if (!isset($ranking[$teamId])) {
+                $ranking[$teamId] = [
+                    'team' => $submission->user->name,
+                    'score' => 0,
+                    'time' => 0,
+                    'submissions' => []
+                ];
+            }
+
+            // Calculer le score (nombre de challenges réussis)
+            $ranking[$teamId]['submissions'][$submission->challenge_id] = $submission;
+            if ($submission->status == 'success') {
+                $ranking[$teamId]['score']++;
+                $ranking[$teamId]['time'] += $submission->time; // Ajouter le temps de soumission
+            }
+        }
+
+        // Trier par score, puis par temps de soumission
+        uasort($ranking, function($a, $b) {
+            if ($a['score'] == $b['score']) {
+                return $a['time'] <=> $b['time']; // Si égalité, on trie par temps
+            }
+            return $b['score'] <=> $a['score']; // Sinon, on trie par score
+        });
+
+        return $ranking;
+    }
+}
