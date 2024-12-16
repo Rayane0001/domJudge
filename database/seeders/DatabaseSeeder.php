@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
 
         // Appel des autres seeders
         $this->call([
-            TeamSeeder::class,
-            TestSeeder::class, // S'assurer que ce seeder existe bien
+//            TeamSeeder::class,
+//            TestSeeder::class, // S'assurer que ce seeder existe bien
             CompetitionSeeder::class, // Ajout du CompetitionSeeder
         ]);
     }

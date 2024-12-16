@@ -8,7 +8,7 @@
     <ul>
         @forelse ($competitions as $competition)
             <li>
-                <a href="{{ route('competition.show', $competition->id) }}">{{ $competition->name }}</a>
+                <a href="{{ route('competitions.show', $competition->id) }}">{{ $competition->name }}</a> <!-- Lien vers les détails -->
                 <p>{{ $competition->description }}</p>
                 <small>
                     Débute le : {{ $competition->start_date }} | Termine le : {{ $competition->end_date }}

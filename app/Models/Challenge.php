@@ -9,13 +9,9 @@ class Challenge extends Model
 {
     use HasFactory;
 
-    public function competition()
-    {
-        return $this->belongsTo(Competition::class);  // Chaque challenge appartient à une compétition
-    }
-
+    // Définir la relation avec les soumissions
     public function submissions()
     {
-        return $this->hasMany(Submission::class);  // Un challenge peut avoir plusieurs soumissions
+        return $this->hasMany(Submission::class);
     }
 }

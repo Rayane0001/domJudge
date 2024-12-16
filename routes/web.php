@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Competition;
+use App\Http\Controllers\LeaderboardController;
 
 /**
  * Routes pour les pages statiques
@@ -133,3 +134,5 @@ Route::post('/competition/{id}/submit', function (Request $request, $id) {
 
     return back()->with('success', 'Votre solution a été envoyée avec succès !');
 })->name('submission.store');
+
+Route::get('/leaderboard', [LeaderboardController::class, 'index']);
