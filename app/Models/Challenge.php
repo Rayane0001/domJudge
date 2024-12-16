@@ -9,14 +9,8 @@ class Challenge extends Model
 {
     use HasFactory;
 
-    /*
-     * Les attributs assignables en masse.
-     */
     protected $fillable = ['nom', 'difficulte', 'enonce', 'visuel'];
 
-    /*
-     * Les types des colonnes pour la conversion automatique.
-     */
     protected $casts = [
         'nom' => 'string',
         'difficulte' => 'string',
