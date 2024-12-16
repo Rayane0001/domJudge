@@ -1,20 +1,12 @@
-@extends('layouts.master')
-
-@section('title', 'Contacts')
+@extends('layouts.layout')
 
 @section('content')
-    <x-banner title="Contactez-nous" subtitle="Nous sommes à votre écoute !" />
+    <h2>Contact</h2>
     <form method="POST" action="{{ route('contact.submit') }}">
         @csrf
-        <label for="name">Nom et prénom :</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Adresse email :</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message :</label>
-        <textarea id="message" name="message" required></textarea>
-
+        <label>Nom : <input type="text" name="name" required></label><br>
+        <label>Email : <input type="email" name="email" required></label><br>
+        <label>Message : <textarea name="message" required></textarea></label><br>
         <button type="submit">Envoyer</button>
     </form>
 @endsection
