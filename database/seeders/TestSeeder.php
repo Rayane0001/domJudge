@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Test;
+use Faker\Factory as Faker;
 
 class TestSeeder extends Seeder
 {
@@ -12,14 +13,14 @@ class TestSeeder extends Seeder
      */
     public function run()
     {
-        Test::create([
-            'title' => 'Test Laravel',
-            'description' => 'Description de test Laravel',
-        ]);
+        $faker = Faker::create();
 
-        Test::create([
-            'title' => 'Test PHP',
-            'description' => 'Description de test PHP',
-        ]);
+
+        for ($i = 0; $i < 10; $i++) {
+            Test::create([
+                'title' => $faker->sentence, // Un titre aléatoire
+                'description' => $faker->paragraph, // Une description aléatoire
+            ]);
+        }
     }
 }
