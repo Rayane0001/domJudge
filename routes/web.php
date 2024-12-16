@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\SubmissionController;
@@ -53,7 +54,7 @@ Route::post('/login', function (Request $request) {
 
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.index');
     }
 
     return back()->withErrors(['email' => 'Les informations de connexion sont incorrectes.']);
@@ -67,9 +68,14 @@ Route::post('/logout', function (Request $request) {
     return redirect()->route('home');
 })->name('logout');
 
-Route::get('/dashboard', function () {
-    return 'Bienvenue sur le tableau de bord !';
-})->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+Route::middleware('auth')->group(function () {
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+  Route::get('/dashboard/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+  Route::post('/dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
+});
+
 
 /* page CRUD */
 
