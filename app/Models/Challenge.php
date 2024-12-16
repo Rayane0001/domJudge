@@ -9,13 +9,10 @@ class Challenge extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'competition_id'];
+
     public function competition()
     {
-        return $this->belongsTo(Competition::class);  // Chaque challenge appartient à une compétition
-    }
-
-    public function submissions()
-    {
-        return $this->hasMany(Submission::class);  // Un challenge peut avoir plusieurs soumissions
+        return $this->belongsTo(Competition::class);
     }
 }

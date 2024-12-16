@@ -9,31 +9,12 @@ class Competition extends Model
 {
     use HasFactory;
 
-    // Define the attributes that are mass assignable
-    protected $fillable = [
-        'name',
-        'start_registration',
-        'end_registration',
-        'competition_date',
-        'description',
-        'visual',
-        'comp_report',
-    ];
+    // Les colonnes modifiables
+    protected $fillable = ['name', 'description', 'start_date', 'end_date'];
 
-    // Casts the attributes to their respective data types
-    protected $casts = [
-        'name' => 'string',
-        'start_registration' => 'datetime',
-        'end_registration' => 'datetime',
-        'competition_date' => 'datetime',
-        'description' => 'string',
-        'visual' => 'string',
-        'comp_report' => 'string',
-    ];
-
-    // Relationships
-    public function teams()
+    public function challenges()
     {
-        return $this->belongsToMany(Team::class);
+        return $this->hasMany(Challenge::class);
     }
 }
+

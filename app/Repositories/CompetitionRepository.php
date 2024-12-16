@@ -3,13 +3,16 @@
 namespace App\Repositories;
 
 use App\Models\Competition;
-use Illuminate\Database\Eloquent\Collection;
 
 class CompetitionRepository implements ICompetitionRepository
 {
-
-    public function all(string $cat = 'All', float $cout = 0.0, int $temps = 0): Collection
+    public function all()
     {
-        return Competition::all();
+        return Competition::all(); // Récupère toutes les compétitions
+    }
+
+    public function find($id)
+    {
+        return Competition::find($id); // Récupère une compétition par ID
     }
 }

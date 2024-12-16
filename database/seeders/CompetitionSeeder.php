@@ -2,19 +2,22 @@
 
 namespace Database\Seeders;
 
-use App\Models\Competition;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CompetitionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
-        // Create 10 random competitions
-        Competition::factory(10)->create();
+        DB::table('competitions')->insert([
+            [
+                'name' => 'Compétition Test',
+                'description' => 'Compétition fictive pour tester le site.',
+                'start_date' => now(),
+                'end_date' => now()->addDays(7),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }
