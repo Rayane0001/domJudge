@@ -78,13 +78,13 @@ Entity Message{
     + date: Date
 }
 
-Competition "1" --> "0..*" Challenge : "proposes"
-Competition "1" --> "0..*" DiscussionThread : "includes"
-Competition "1" --> "0..*" Team : "registers"
-Challenge "1" --> "0..*" Test : "verifies"
-Challenge "1" --> "0..*" Submission : "receives"
-Team "1" --> "0..*" Submission : "submits"
-Team "0..*" --> "1" User : "has members"
+Competition "1" <-- "0..*" Challenge : "proposes"
+Competition "1" <-- "0..*" DiscussionThread : "includes"
+Competition "1" <-- "0..*" Team : "registers"
+Challenge "1" <-- "0..*" Test : "verifies"
+Challenge "1" <-- "0..*" Submission : "receives"
+Team "1" <-- "0..*" Submission : "submits"
+Team "0..*" <-- "1" User : "has members"
 Team  -- Score
 Challenge  -- Score
 User -- Message
@@ -108,6 +108,7 @@ class "Challenge" {
 + difficulty_level : String
 + description : Text
 + statement : String
++ id_competition : integer <FK>
   }
 
 class Competition {
@@ -127,6 +128,7 @@ class DiscussionThread {
 --
 + title : String
 + creation_date : Date
++ id_competition : integer <FK>
   }
 
 class User {
@@ -135,6 +137,7 @@ class User {
 + name : String
 + email : String
 + password : String
++ id_team : integer <FK>
   }
 
 class Team {
@@ -144,6 +147,7 @@ class Team {
 + creation_date : Date
 + description : Text
 + visual : String
++ id_competition : integer <FK>
   }
 
 class Test {
@@ -152,6 +156,7 @@ class Test {
 + name : String
 + input_link : String
 + output_link : String
++ id_challenge : integer <FK>
   }
 
 class Submission {
@@ -161,6 +166,7 @@ class Submission {
 + description : Text
 + date : Date
 + solution : String
++ id_test : integer <FK>
   }
 
 class Score{
@@ -178,13 +184,13 @@ id_thread : int <FK> <PK>
 + date: Date
 }
 
-Competition "1" --> "0..*" Challenge : "proposes"
-Competition "1" --> "0..*" DiscussionThread : "includes"
-Competition "1" --> "0..*" Team : "registers"
-Challenge "1" --> "0..*" Test : "verifies"
-Challenge "1" --> "0..*" Submission : "receives"
-Team "1" --> "0..*" Submission : "submits"
-Team "0..*" --> "1" User : "has members"
+Competition "1" <-- "0..*" Challenge : "proposes"
+Competition "1" <-- "0..*" DiscussionThread : "includes"
+Competition "1" <-- "0..*" Team : "registers"
+Challenge "1" <-- "0..*" Test : "verifies"
+Challenge "1" <-- "0..*" Submission : "receives"
+Team "1" <-- "0..*" Submission : "submits"
+Team "0..*" <-- "1" User : "has members"
 Score "1" --> "0..*" Challenge : "wrote on"
 Score "1" --> "0..*" Team : "wrote"
 Message "1" --> "0..*" DiscussionThread : "wrote on"
