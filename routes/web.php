@@ -136,3 +136,10 @@ Route::post('/competition/{id}/submit', function (Request $request, $id) {
 })->name('submission.store');
 
 Route::get('/leaderboard', [LeaderboardController::class, 'index']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // Ensure that the `dashboard` view exists
+})->middleware('auth')->name('dashboard.index');
+
+Route::get('/competitions', [CompetitionController::class, 'index']);
+Route::get('/competitions/{id}', [CompetitionController::class, 'show']);

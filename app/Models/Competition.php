@@ -9,11 +9,12 @@ class Competition extends Model
 {
     use HasFactory;
 
-    // Si nécessaire, déclare les colonnes modifiables
-    protected $fillable = [
-        'name',
-        'description',
-        'start_date',
-        'end_date',
-    ];
+    // Les colonnes modifiables
+    protected $fillable = ['name', 'description', 'start_date', 'end_date'];
+
+    public function challenges()
+    {
+        return $this->hasMany(Challenge::class);
+    }
 }
+
