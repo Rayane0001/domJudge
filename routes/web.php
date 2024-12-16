@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\SubmissionController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +70,8 @@ Route::post('/logout', function (Request $request) {
 Route::get('/dashboard', function () {
     return 'Bienvenue sur le tableau de bord !';
 })->name('dashboard');
+
+/* page CRUD */
 
 // Route pour afficher toutes les compétitions
 Route::get('/competitions', [CompetitionController::class, 'index'])->name('competitions.index');
