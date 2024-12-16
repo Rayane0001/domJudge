@@ -102,8 +102,8 @@ scale 700 height
 
 @startuml
 class "Challenge" {
-+ id : Integer <FK>
- --
++ id : Integer <PK>
+--
 + name : String
 + difficulty_level : String
 + description : Text
@@ -111,7 +111,7 @@ class "Challenge" {
   }
 
 class Competition {
-+ id : Integer
++ id : Integer <PK>
 --
 + name : String
 + registration_start_date : Date
@@ -123,14 +123,14 @@ class Competition {
   }
 
 class DiscussionThread {
-+ id : Integer <FK>
++ id : Integer <PK>
 --
 + title : String
 + creation_date : Date
   }
 
 class User {
-+ id : Integer <FK>
++ id : Integer <PK>
 --
 + name : String
 + email : String
@@ -138,7 +138,7 @@ class User {
   }
 
 class Team {
-+ id : Integer <FK>
++ id : Integer <PK>
 --
 + name : String
 + creation_date : Date
@@ -147,7 +147,7 @@ class Team {
   }
 
 class Test {
-+ id : Integer <FK>
++ id : Integer <PK>
 --
 + name : String
 + input_link : String
