@@ -13,6 +13,7 @@
                 <p><strong>Email :</strong> {{ $user->email }}</p>
                 <p><strong>Date de création :</strong> {{ $user->created_at->format('d/m/Y') }}</p>
             </div>
+            <a href="{{ route('dashboard.edit') }}">Modifier</a>
         </div>
     </div>
 @endsection

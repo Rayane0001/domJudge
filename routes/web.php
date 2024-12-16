@@ -70,6 +70,13 @@ Route::post('/logout', function (Request $request) {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
+Route::middleware('auth')->group(function () {
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+  Route::get('/dashboard/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+  Route::post('/dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
+});
+
+
 /* page CRUD */
 
 // Route pour afficher toutes les compétitions
