@@ -25,3 +25,11 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return 'Page d\'inscription (en cours de développement)';
 })->name('register');
+
+Route::get('/dashboard', function () {
+    return 'Bienvenue sur le tableau de bord !';
+})->name('dashboard');
+
+Route::post('/logout', function () {
+    return redirect()->route('home');
+})->name('logout');
