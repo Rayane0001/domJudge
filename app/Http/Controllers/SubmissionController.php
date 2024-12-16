@@ -13,16 +13,17 @@ class SubmissionController extends Controller
     {
         // Validation de la soumission
         $request->validate([
-            'answer' => 'required|string',
+            'solution_file' => 'required|file|mimes:zip,rar,pdf', // Formats de fichier acceptés
         ]);
 
         // Créer une soumission
         $submission = new Submission();
-        $submission->user_id = auth()->id();
-        $submission->challenge_id = $challenge->id;
+        $submission->team_id = auth()->user()->team_id; // Récupérer l'ID de l'équipe de l'utilisateur
         $submission->competition_id = $competition->id;
-        $submission->answer = $request->answer;
-        $submission->status = 'pending';  // Initialement en attente
+        $submission->challenge_id = $challenge->id;
+        $submission->submission_date = now(); // Date actuelle pour la soumission
+        $submission->solution_file = $submission->uploadSolution($request->file('solution_file')); // Stockage du fichier
+        $submission->result = 'pending'; // Initialement en attente
         $submission->save();
 
         return redirect()->route('competitions.challenges.show', [$competition->id, $challenge->id])

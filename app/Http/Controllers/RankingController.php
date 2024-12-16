@@ -9,7 +9,7 @@ class RankingController extends Controller
     public function index(Competition $competition)
     {
         // Récupérer toutes les soumissions pour cette compétition
-        $submissions = $competition->submissions()->with(['user', 'challenge'])->get();
+        $submissions = $competition->submissions()->with(['team', 'challenge'])->get();
 
         // Calculer le classement
         $teams = $this->calculateRanking($submissions);
@@ -23,10 +23,10 @@ class RankingController extends Controller
 
         // Organiser les soumissions par équipe
         foreach ($submissions as $submission) {
-            $teamId = $submission->user_id;
+            $teamId = $submission->team_id;
             if (!isset($ranking[$teamId])) {
                 $ranking[$teamId] = [
-                    'team' => $submission->user->name,
+                    'team' => $submission->team->name,
                     'score' => 0,
                     'time' => 0,
                     'submissions' => []
@@ -35,9 +35,9 @@ class RankingController extends Controller
 
             // Calculer le score (nombre de challenges réussis)
             $ranking[$teamId]['submissions'][$submission->challenge_id] = $submission;
-            if ($submission->status == 'success') {
+            if ($submission->result == 'success') {
                 $ranking[$teamId]['score']++;
-                $ranking[$teamId]['time'] += $submission->time; // Ajouter le temps de soumission
+                $ranking[$teamId]['time'] += $submission->submission_date->timestamp; // Ajouter le temps de soumission
             }
         }
 
@@ -52,3 +52,4 @@ class RankingController extends Controller
         return $ranking;
     }
 }
+

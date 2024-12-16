@@ -23,7 +23,7 @@
                 @foreach($competition->challenges as $challenge)
                     <td>
                         @isset($team['submissions'][$challenge->id])
-                            {{ $team['submissions'][$challenge->id]->status == 'success' ? 'Réussi' : 'Échoué' }}
+                            {{ $team['submissions'][$challenge->id]->result == 'success' ? 'Réussi' : 'Échoué' }}
                         @else
                             N/A
                         @endisset
