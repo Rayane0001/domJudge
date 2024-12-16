@@ -5,7 +5,7 @@
             <li><a href="{{ route('about') }}">À propos</a></li>
             <li><a href="{{ route('contact') }}">Contacts</a></li>
             @auth
-                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
