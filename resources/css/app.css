@@ -1,3 +1,130 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Styles globaux */
+body, html {
+    height: 100%;  /* S'assure que le body et html occupent toute la hauteur de la page */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Flexbox pour disposer les éléments verticalement */
+}
+
+/* Contenu principal (prend toute la place restante) */
+main {
+    flex: 1;  /* Permet au contenu de prendre l'espace restant */
+}
+
+/* Style pour le footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    margin-top: auto; /* Pousse le footer vers le bas */
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/*!* Styles globaux *!*/
+/*body {*/
+/*    background-color: #f8f9fa;*/
+/*    font-family: Arial, sans-serif;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*!* Style pour le footer *!*/
+/*footer {*/
+/*    background-color: #343a40;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    padding: 10px 0;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*footer p {*/
+/*    margin: 0;*/
+/*}*/
+
+/*!* Ajouter un peu d'espace au bas de la page pour ne pas que le contenu soit caché par le footer *!*/
+/*body {*/
+/*    padding-bottom: 40px;*/
+/*}*/
+/*!* Style global du header *!*/
+/*header {*/
+/*    background-color: #343a40;*/
+/*    padding: 10px 0;*/
+/*    color: white;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    z-index: 1000;*/
+/*}*/
+
+/*!* Style du menu de navigation *!*/
+/*nav ul {*/
+/*    list-style-type: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*nav ul li {*/
+/*    margin: 0 15px;*/
+/*}*/
+
+/*nav ul li a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    font-size: 16px;*/
+/*    padding: 8px 12px;*/
+/*    border-radius: 4px;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*!* Style au survol des liens *!*/
+/*nav ul li a:hover {*/
+/*    background-color: #495057;*/
+/*}*/
+
+/*!* Style du bouton de déconnexion *!*/
+/*form button {*/
+/*    background-color: #dc3545;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 6px 12px;*/
+/*    border-radius: 4px;*/
+/*    cursor: pointer;*/
+/*}*/
+/*!* Style pour la bannière *!*/
+/*.banner {*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    padding: 40px 20px;*/
+/*    text-align: center;*/
+/*    border-radius: 8px;*/
+/*    margin-bottom: 30px;*/
+/*}*/
+
+/*.banner h1 {*/
+/*    font-size: 36px;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.banner p {*/
+/*    font-size: 18px;*/
+/*}*/
+
