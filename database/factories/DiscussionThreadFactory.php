@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DiscussionThreadFactory extends Factory
 {
-    protected $model = DiscussionThread::class;
-
     public function definition()
     {
         return [
