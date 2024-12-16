@@ -5,7 +5,7 @@
             <li class="mx-3"><a href="{{ route('about') }}" class="text-white text-decoration-none p-2 rounded hover-bg-dark">À propos</a></li>
             <li class="mx-3"><a href="{{ route('contact') }}" class="text-white text-decoration-none p-2 rounded hover-bg-dark">Contacts</a></li>
             @auth
-                <li class="mx-3"><a href="{{ route('dashboard') }}" class="text-white text-decoration-none p-2 rounded hover-bg-dark">Dashboard</a></li>
+                <li class="mx-3"><a href="{{ route('dashboard.index') }}" class="text-white text-decoration-none p-2 rounded hover-bg-dark">Dashboard</a></li>
                 <li class="mx-3">
                     <form method="POST" action="{{ route('logout') }}" class="bg-transparent border-0 p-0 shadow-none align-self-center">
                         @csrf
