@@ -3,33 +3,36 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Challenge
+class Challenge extends Model
 {
     use HasFactory;
 
     /*
-     * The attributes that are mass assignable.
+     * Les attributs assignables en masse.
      */
-    protected $fillable = ["nom", "difficulté", "énoncé", "visuel", "la liste des tests"];
+    protected $fillable = ['nom', 'difficulte', 'enonce', 'visuel'];
 
+    /*
+     * Les types des colonnes pour la conversion automatique.
+     */
     protected $casts = [
         'nom' => 'string',
-        'difficulté' => 'ingteger',
-        'énoncé' => 'string',
+        'difficulte' => 'string',
+        'enonce' => 'string',
         'visuel' => 'string',
-        'temps_preparation' => 'integer',
-        'nb_personnes' => 'integer',
-        'cout' => 'integer'
     ];
+
+    public function tests() {
+        return $this->hasMany(Test::class);
+    }
+
+    public function soumissions() {
+        return $this->hasMany(Submission::class);
+    }
 
     public function user() {
         return $this->belongsTo(User::class);
-    }
-
-    public function ingredients() {
-        return $this->belongsToMany(Ingredient::class, 'compose')
-            ->as('ingredients')
-            ->withPivot('quantite', 'observation');
     }
 }
