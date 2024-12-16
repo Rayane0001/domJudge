@@ -1,15 +1,11 @@
-@extends('layout')
+@extends('layouts.layout')
 
-@section('title', 'Challenge : ' . $challenge->name)
+@section('title', $competition->name)
 
 @section('content')
-    <h1>{{ $challenge->name }}</h1>
-    <p>{{ $challenge->description }}</p>
-
-    <form action="{{ route('competitions.challenges.submit', [$competition->id, $challenge->id]) }}" method="POST">
-        @csrf
-        <label for="answer">Réponse :</label>
-        <textarea name="answer" id="answer" required></textarea><br>
-        <button type="submit">Soumettre</button>
-    </form>
+    <h1>{{ $competition->name }}</h1>
+    <p><strong>Description :</strong> {{ $competition->description }}</p>
+    <p><strong>Date de début :</strong> {{ $competition->start_date }}</p>
+    <p><strong>Date de fin :</strong> {{ $competition->end_date }}</p>
+    <a href="{{ route('competitions.index') }}">Retour à la liste des compétitions</a>
 @endsection

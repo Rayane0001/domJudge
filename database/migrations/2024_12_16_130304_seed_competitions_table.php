@@ -1,13 +1,11 @@
 <?php
 
-namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CompetitionSeeder extends Seeder
+class SeedCompetitionsTable extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         DB::table('competitions')->insert([
             [
@@ -15,7 +13,7 @@ class CompetitionSeeder extends Seeder
                 'description' => 'Compétition fictive pour tester le site.',
                 'start_date' => now(),
                 'end_date' => now()->addDays(7),
-                'created_at' => now(),
+                'created_at' => nw(),
                 'updated_at' => now(),
             ],
         ]);
