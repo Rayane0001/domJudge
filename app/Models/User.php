@@ -3,36 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Utilise Authenticatable pour l'authentification
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     /*
      * Les attributs assignables en masse.
      */
-    protected $fillable = ['nom', 'difficulte', 'enonce', 'visuel'];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /*
+     * Les attributs masqués pour les tableaux JSON.
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     /*
      * Les types des colonnes pour la conversion automatique.
      */
     protected $casts = [
-        'nom' => 'string',
-        'difficulte' => 'string',
-        'enonce' => 'string',
-        'visuel' => 'string',
+        'email_verified_at' => 'datetime',
     ];
-
-    public function tests() {
-        return $this->hasMany(Test::class);
-    }
-
-    public function soumissions() {
-        return $this->hasMany(Submission::class);
-    }
-
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
 }

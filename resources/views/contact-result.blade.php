@@ -1,10 +1,8 @@
-@extends('layouts.master')
-
-@section('title', 'Contact envoyé')
+@extends('layouts.layout')
 
 @section('content')
-    <x-banner title="Merci !" subtitle="Nous avons bien reçu votre message." />
-    <p>Nom : {{ $data['name'] }}</p>
-    <p>Email : {{ $data['email'] }}</p>
-    <p>Message : {{ $data['message'] }}</p>
+    <h2>Message envoyé</h2>
+    <p>Merci pour votre message, {{ $data['name'] }}.</p>
+    <p>Nous vous répondrons à l'adresse : {{ $data['email'] }}</p>
+    <p>Votre message : {{ $data['message'] }}</p>
 @endsection
