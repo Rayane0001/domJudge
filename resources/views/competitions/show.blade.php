@@ -3,17 +3,26 @@
 @section('title', 'Compétition : ' . $competition->name)
 
 @section('content')
-    <h1>{{ $competition->name }}</h1>
-    <p>{{ $competition->description }}</p>
+    <div class="container py-5">
+        <!-- Titre de la compétition -->
+        <h1 class="display-4 mb-4">{{ $competition->name }}</h1>
 
-    <h2>Challenges</h2>
-    <ul>
-        @foreach ($competition->challenges as $challenge)
-            <li>
-                <a href="{{ route('competitions.challenges.show', [$competition->id, $challenge->id]) }}">{{ $challenge->name }}</a>
-            </li>
-        @endforeach
-    </ul>
+        <!-- Description de la compétition -->
+        <p class="lead mb-4">{{ $competition->description }}</p>
 
-    <h2><a href="{{ route('competitions.ranking', $competition->id) }}">Voir le classement</a></h2>
+        <!-- Liste des challenges -->
+        <h2 class="mb-3">Challenges</h2>
+        <ul class="list-group mb-4">
+            @foreach ($competition->challenges as $challenge)
+                <li class="list-group-item">
+                    <a href="{{ route('competitions.challenges.show', [$competition->id, $challenge->id]) }}" class="text-decoration-none text-dark">
+                        {{ $challenge->name }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+
+        <!-- Lien vers le classement -->
+        <h2><a href="{{ route('competitions.ranking', $competition->id) }}" class="btn btn-link">Voir le classement</a></h2>
+    </div>
 @endsection

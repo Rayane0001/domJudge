@@ -32,99 +32,142 @@ footer p {
 }
 
 
-/*!* Styles globaux *!*/
-/*body {*/
-/*    background-color: #f8f9fa;*/
-/*    font-family: Arial, sans-serif;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
 
-/*!* Style pour le footer *!*/
-/*footer {*/
-/*    background-color: #343a40;*/
-/*    color: white;*/
-/*    text-align: center;*/
-/*    padding: 10px 0;*/
-/*    position: fixed;*/
-/*    width: 100%;*/
-/*    bottom: 0;*/
-/*    left: 0;*/
-/*    font-size: 14px;*/
-/*}*/
+/* Styles spécifiques pour la page de la liste des compétitions */
 
-/*footer p {*/
-/*    margin: 0;*/
-/*}*/
+/* Espacement du titre */
+h1.my-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
 
-/*!* Ajouter un peu d'espace au bas de la page pour ne pas que le contenu soit caché par le footer *!*/
-/*body {*/
-/*    padding-bottom: 40px;*/
-/*}*/
-/*!* Style global du header *!*/
-/*header {*/
-/*    background-color: #343a40;*/
-/*    padding: 10px 0;*/
-/*    color: white;*/
-/*    position: fixed;*/
-/*    width: 100%;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    z-index: 1000;*/
-/*}*/
+/* Tableau des challenges */
+.table th, .table td {
+    vertical-align: middle;
+}
 
-/*!* Style du menu de navigation *!*/
-/*nav ul {*/
-/*    list-style-type: none;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
+/* Espacement des boutons (création, édition, suppression) */
+.btn-sm {
+    padding: 5px 10px;
+}
 
-/*nav ul li {*/
-/*    margin: 0 15px;*/
-/*}*/
+/* Marges et espacement du modal */
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
 
-/*nav ul li a {*/
-/*    color: white;*/
-/*    text-decoration: none;*/
-/*    font-size: 16px;*/
-/*    padding: 8px 12px;*/
-/*    border-radius: 4px;*/
-/*    transition: background-color 0.3s ease;*/
-/*}*/
+.modal-footer {
+    text-align: center;
+}
 
-/*!* Style au survol des liens *!*/
-/*nav ul li a:hover {*/
-/*    background-color: #495057;*/
-/*}*/
+/* Modal Body */
+.modal-body {
+    padding: 1.5rem;
+}
 
-/*!* Style du bouton de déconnexion *!*/
-/*form button {*/
-/*    background-color: #dc3545;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    padding: 6px 12px;*/
-/*    border-radius: 4px;*/
-/*    cursor: pointer;*/
-/*}*/
-/*!* Style pour la bannière *!*/
-/*.banner {*/
-/*    background-color: #007bff;*/
-/*    color: white;*/
-/*    padding: 40px 20px;*/
-/*    text-align: center;*/
-/*    border-radius: 8px;*/
-/*    margin-bottom: 30px;*/
-/*}*/
+/* Formulaire dans les modaux */
+.modal-body .form-label {
+    font-weight: bold;
+}
 
-/*.banner h1 {*/
-/*    font-size: 36px;*/
-/*    margin-bottom: 10px;*/
-/*}*/
+.modal-body .form-control {
+    border-radius: 8px;
+}
 
-/*.banner p {*/
-/*    font-size: 18px;*/
-/*}*/
+/* Bouton de création et édition */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
 
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Bouton de suppression */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Style des alertes et erreurs (si nécessaires) */
+.alert {
+    margin-top: 20px;
+}
+
+/* Modal boutons de fermeture */
+.btn-close {
+    background-color: transparent;
+    border: none;
+}
+/* Titre de la page */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Style du formulaire */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Champs du formulaire */
+form label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Bouton de soumission */
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles d'alerte pour les erreurs */
+.errors {
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.errors p {
+    font-size: 0.875rem;
+}
